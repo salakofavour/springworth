@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient {
+  width: 100%;
+  height: 20rem;
+  z-index: 5;
+  background-color: red;
+  mask-image: linear-gradient(to bottom, rgb(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+.navBorder {
+  @apply px-2 h-12 flex items-center border border-green-600 hover:border-white cursor-pointer;
+}
+
+.navBorder2 {
+  @apply border px-2 h-8 flex items-center border-green-500 hover:border-white cursor-pointer;
+}
+
+.padding {
+  @apply px-2 lg:px-5;
+}
+
+.inputField {
+  @apply border border-gray-400 rounded-sm py-1 px-3 lg:px-5  outline-orange-400;
+}
