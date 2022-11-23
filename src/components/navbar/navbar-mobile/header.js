@@ -14,6 +14,9 @@ import {
 export default function Header({ setToogleDrawer, user }) {
   const { totalUniqueItems } = useCart();
   const btnRef = useRef();
+
+  // test
+
   useEffect(() => {
     function cloaseDrawer(e) {
       if (btnRef.current && !btnRef.current.contains(e.target)) {
