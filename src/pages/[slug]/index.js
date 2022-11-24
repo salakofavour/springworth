@@ -14,6 +14,7 @@ import ProductImageContainer from "../../pageComponents/productDetails/productIm
 import ProductDetailsInfoContainer from "../../pageComponents/productDetails/productDetailsInfoContainer";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useAuth } from "../../context/authContext";
 
 const CheckoutContainer = dynamic(() =>
   import("../../pageComponents/productDetails/checkoutContainer")
@@ -21,6 +22,7 @@ const CheckoutContainer = dynamic(() =>
 
 export default function ProductDetailsPage() {
   const router = useRouter();
+  const { user } = useAuth();
   const { slug } = router.query;
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 900px)" });
 
@@ -61,8 +63,10 @@ export default function ProductDetailsPage() {
               name={data.product.name}
               imgUrl={data.product.imgUrl}
             />
-            <ProductDetailsInfoContainer product={data.product} />
-            {!isTabletOrMobile && <CheckoutContainer product={data.product} />}
+            <ProductDetailsInfoContainer user={user} product={data.product} />
+            {!isTabletOrMobile && (
+              <CheckoutContainer user={user} product={data.product} />
+            )}
           </div>
         </div>
       </Container>

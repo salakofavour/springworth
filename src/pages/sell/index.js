@@ -22,8 +22,6 @@ export default function SellPage() {
   const router = useRouter();
   const [openModal, setModalOpen] = useState(false);
 
-  console.log(user);
-
   if (!user) {
     router.push("/");
     return;

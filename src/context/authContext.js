@@ -28,7 +28,6 @@ export function AuthContextProvider({ children }) {
   }, []);
 
   async function triggerSubscriptionStatus(id) {
-    console.log("trigger");
     const { data } = await (
       await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/stripe/subscription-status?id=${id}`

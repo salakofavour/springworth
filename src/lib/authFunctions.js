@@ -19,7 +19,12 @@ import {
   getDocs,
   collection,
   deleteDoc,
+  arrayUnion,
+  Timestamp,
 } from "firebase/firestore";
+
+import { v4 as uuid } from "uuid";
+import { getUserProuducts } from "./getProductsFunctions";
 
 export async function handleImageUpload(file, setProgress, uid) {
   try {
@@ -90,6 +95,7 @@ export async function handleSignup(name, email, password, img, setProgress) {
     };
 
     await setDoc(doc(db, "users", userCredential.user.uid), userData);
+    await setDoc(doc(db, "userChats", userCredential.user.uid), {});
 
     toast.success("account created");
 
@@ -286,4 +292,73 @@ export async function getAddressByProduct(id) {
     toast.error(err.message);
     return false;
   }
+}
+
+export async function handleSelectUserChat(user, sellerId, combinedId) {
+  const sellerUser = await getCurrentUserFromDb(sellerId);
+
+  try {
+    const res = await getDoc(doc(db, "chats", combinedId));
+    if (!res.exists()) {
+      // create chat application
+      await setDoc(doc(db, "chats", combinedId), {
+        messages: [],
+      });
+
+      // create user chat
+      await updateDoc(doc(db, "userChats", user.uid), {
+        [combinedId + ".userInfo"]: {
+          uid: sellerUser.uid,
+          displayName: sellerUser.name,
+          email: sellerUser.email,
+          imgUrl: sellerUser.imgUrl,
+        },
+        [combinedId + ".date"]: serverTimestamp(),
+      });
+
+      await updateDoc(doc(db, "userChats", sellerUser.uid), {
+        [combinedId + ".userInfo"]: {
+          uid: user.uid,
+          displayName: user.name,
+          email: user.email,
+          imgUrl: user.imgUrl,
+        },
+        [combinedId + ".date"]: serverTimestamp(),
+      });
+    }
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+
+export async function SendMessages(combineId, userId, selectedUserId, text) {
+  try {
+    await updateDoc(doc(db, "chats", combineId), {
+      messages: arrayUnion({
+        id: uuid(),
+        msg: text,
+        senderId: userId,
+        date: Timestamp.now(),
+      }),
+    });
+
+    await updateDoc(doc(db, "userChats", userId), {
+      [combineId + ".date"]: serverTimestamp(),
+    });
+
+    await updateDoc(doc(db, "userChats", selectedUserId), {
+      [combineId + ".date"]: serverTimestamp(),
+    });
+  } catch (err) {
+    toast.error(err.message);
+  }
+}
+
+export async function getSellerInfo(id) {
+  const userInfo = await getCurrentUserFromDb(id);
+  const products = await getUserProuducts(id);
+  const address = await getAllAddress(id);
+
+  const data = { userInfo, products, address };
+  return data;
 }

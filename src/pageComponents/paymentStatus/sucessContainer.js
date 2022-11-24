@@ -12,7 +12,6 @@ export default function SucessContainer({ user }) {
       )
     ).json();
     setData(data);
-    console.log(data);
   }
 
   useEffect(() => {

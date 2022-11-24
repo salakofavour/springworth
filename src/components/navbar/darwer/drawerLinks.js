@@ -34,12 +34,18 @@ export default function DrawerLinks() {
     },
     {
       id: 4,
+      name: "Chats",
+      href: user?.name ? "/chats" : "/account/signin",
+      fun: null,
+    },
+    {
+      id: 5,
       name: "Settings",
       href: user?.name ? "/account/setting" : "/account/signin",
       fun: null,
     },
     {
-      id: 5,
+      id: 6,
       name: "Logout",
       href: "#",
       fun: handleLogout,

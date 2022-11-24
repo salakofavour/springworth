@@ -17,7 +17,7 @@ export default async function handler(req, res) {
       expand: ["data.default_payment_method"],
     });
     await handleUpdateUserSubscriptionStatus(subscription.data[0], uid);
-    console.log(subscription.data[0].id);
+
     res.status(200).json({
       data: {
         status: "Sucessfull",

@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import useSWR from "swr";
 import { useCart } from "react-use-cart";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
+import { Oval } from "react-loader-spinner";
+import { handleSelectUserChat } from "../../lib/authFunctions";
 
-export default function CheckoutContainer({ product }) {
+export default function CheckoutContainer({ product, user }) {
   const { addItem, getItem } = useCart();
   const cartItem = getItem(product?.id);
   const router = useRouter();
+
+  const [loading, setLoading] = useState(false);
 
   async function fetchAddressByProduct() {
     const res = await fetch(
@@ -23,6 +27,21 @@ export default function CheckoutContainer({ product }) {
 
   function goToMyBook() {
     router.push("/my-books");
+  }
+
+  async function chatWithSeller() {
+    if (user?.uid) {
+      setLoading(true);
+      const sellerId = product.userId;
+      const combinedId =
+        sellerId > user.uid ? sellerId + user.uid : user.uid + sellerId;
+      await handleSelectUserChat(user, product.userId, combinedId);
+
+      router.push("/chats");
+      setLoading(false);
+    } else {
+      return toast.error("Please Signin");
+    }
   }
 
   const { data } = useSWR(product.id, fetchAddressByProduct);
@@ -57,15 +76,35 @@ export default function CheckoutContainer({ product }) {
         <p>Quantity:</p>
         <p>{product.quantity}</p>
       </div>
-      <button
-        onClick={cartItem ? goToMyBook : handleAddBook}
-        className=" bg-orange-400 text-white w-full py-1  rounded-3xl bg-myYellow"
-      >
-        {cartItem ? "Go to My books" : "Add to My books"}
-      </button>
-      <button className={` bg-orange-500 text-white w-full py-1  rounded-3xl`}>
-        Chat Now
-      </button>
+      {product?.userId !== user?.uid && (
+        <>
+          <button
+            onClick={cartItem ? goToMyBook : handleAddBook}
+            className=" bg-orange-400 text-white w-full py-1  rounded-3xl bg-myYellow"
+          >
+            {cartItem ? "Go to My books" : "Add to My books"}
+          </button>
+
+          {loading ? (
+            <div className="w-full flex justify-center">
+              <Oval
+                height="40"
+                width="40"
+                radius="9"
+                color="green"
+                ariaLabel="loading"
+              />
+            </div>
+          ) : (
+            <button
+              onClick={chatWithSeller}
+              className={` bg-orange-500 text-white w-full py-1  rounded-3xl`}
+            >
+              Chat Now
+            </button>
+          )}
+        </>
+      )}
     </div>
   );
 }

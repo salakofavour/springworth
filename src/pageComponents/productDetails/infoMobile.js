@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useCart } from "react-use-cart";
 import { toast } from "react-toastify";
 import useSWR from "swr";
+import { Oval } from "react-loader-spinner";
+import { handleSelectUserChat } from "../../lib/authFunctions";
 
-export default function InfoMobile({ product }) {
+export default function InfoMobile({ product, user }) {
   const { addItem, getItem } = useCart();
   const cartItem = getItem(product?.id);
   const router = useRouter();
+
+  const [loading, setLoading] = useState(false);
 
   async function fetchAddressByProduct() {
     const res = await fetch(
@@ -28,6 +32,21 @@ export default function InfoMobile({ product }) {
 
   function goToMyBook() {
     router.push("/my-books");
+  }
+
+  async function chatWithSeller() {
+    if (user?.uid) {
+      setLoading(true);
+      const sellerId = product.userId;
+      const combinedId =
+        sellerId > user.uid ? sellerId + user.uid : user.uid + sellerId;
+      await handleSelectUserChat(user, product.userId, combinedId);
+
+      router.push("/chats");
+      setLoading(false);
+    } else {
+      return toast.error("Please Signin");
+    }
   }
 
   function QtyButton() {
@@ -74,11 +93,27 @@ export default function InfoMobile({ product }) {
       <div className="flex flex-col w-full">
         <BasicInfo />
         <QtyButton />
-        <Button
-          handleClick={cartItem ? goToMyBook : handleAddBook}
-          text={cartItem ? "Go to my book" : "Add to My book"}
-        />
-        <Button handleClick={() => console.log("")} text={"Chat Now"} />
+        {product.userId !== user?.uid && (
+          <>
+            <Button
+              handleClick={cartItem ? goToMyBook : handleAddBook}
+              text={cartItem ? "Go to my book" : "Add to My book"}
+            />
+            {loading ? (
+              <div className="w-full flex justify-center">
+                <Oval
+                  height="40"
+                  width="40"
+                  radius="9"
+                  color="green"
+                  ariaLabel="loading"
+                />
+              </div>
+            ) : (
+              <Button handleClick={chatWithSeller} text={"Chat Now"} />
+            )}
+          </>
+        )}
       </div>
     </div>
   );
