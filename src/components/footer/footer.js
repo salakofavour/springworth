@@ -10,7 +10,7 @@ export default function Footer() {
           font: true,
         },
         {
-          name: "Springworth0@gmail.com",
+          name: "sworthcustomerservice@gmail.com",
         },
         {
           name: "863-712-1453",

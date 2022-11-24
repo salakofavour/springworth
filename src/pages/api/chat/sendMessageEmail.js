@@ -10,14 +10,14 @@ export default async function handler(req, res) {
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: "Springworth0@gmail.com", // generated ethereal user
-      pass: "neby scjs pbei mjwt", // generated ethereal password
+      user: "noreply.springworthbooks@gmail.com", // generated ethereal user
+      pass: "bbvh hors bgbq pxjm", // generated ethereal password
     },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: `"Springworth" <${data.senderEmail}>`, // sender address
+    from: `"Springworth Books" <${data.senderEmail}>`, // sender address
     to: `${data.reciverEmail}`, // list of receivers
     subject: "New message", // Subject line
     text: data.message, // plain text body
