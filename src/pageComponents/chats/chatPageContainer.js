@@ -5,6 +5,7 @@ import { useMediaQuery } from "react-responsive";
 
 import ChatUserList from "./chatUserList";
 import ChatArea from "./ChatArea";
+import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 
 export default function ChatPageContainer({ user }) {
   const isMobile = useMediaQuery({
@@ -64,8 +65,10 @@ function ChatList({ selectedUser, setSelectedUser, user, isMobile }) {
         />
       )}
       {isMobile && selectedUser && (
-        <div className=" col-span-12 py-2">
-          <p onClick={() => setSelectedUser(null)}>Go to chats</p>
+        <div className=" col-span-12 pt-1 px-3">
+          <p onClick={() => setSelectedUser(null)}>
+            <ArrowLeftIcon className="w-6" />
+          </p>
         </div>
       )}
     </>

@@ -2,20 +2,22 @@ const nodemailer = require("nodemailer");
 
 export default async function handler(req, res) {
   const data = req.body;
+  const test = "iiabmfviewjxmgrt";
+  const test2 = "neby scjs pbei mjwt";
 
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
     secure: true, // true for 465, false for other ports
     auth: {
-      user: "vedna400@gmail.com", // generated ethereal user
-      pass: "iiabmfviewjxmgrt", // generated ethereal password
+      user: "Springworth0@gmail.com", // generated ethereal user
+      pass: "neby scjs pbei mjwt", // generated ethereal password
     },
   });
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: `"Fred Foo 👻" <${data.senderEmail}>`, // sender address
+    from: `"Springworth" <${data.senderEmail}>`, // sender address
     to: `${data.reciverEmail}`, // list of receivers
     subject: "New message", // Subject line
     text: data.message, // plain text body

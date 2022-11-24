@@ -61,7 +61,9 @@ export default function InputField({
         </div>
       )}
       {isLoadingSpinner ? (
-        <div className="w-full flex justify-center">
+        <div
+          className={` ${isGrid && "w-56 lg:w-96"} w-full flex justify-center`}
+        >
           <Oval
             height="40"
             width="40"

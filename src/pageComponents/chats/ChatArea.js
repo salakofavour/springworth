@@ -35,7 +35,13 @@ export default function ChatArea({ user, combineId, selectedUser }) {
     e.preventDefault();
 
     if (text.length === 0) {
-      toast.error("please write some text");
+      toast.error("Please write some text");
+      return;
+    }
+
+    if (text.length > 40) {
+      toast.error("You can write only 40 words in one time");
+      setText("");
       return;
     }
 
@@ -81,7 +87,7 @@ export default function ChatArea({ user, combineId, selectedUser }) {
           </button>
         </Link>
       </div>
-      <div className="overflow-y-scroll flex-col  gap-x-20  h-96 py-5 px-5">
+      <div className="overflow-y-scroll flex-col  gap-x-20  h-96 py-5 px-0 lg:px-5">
         {chats?.loading ? (
           <p>Loading...</p>
         ) : chats?.messages.length ? (
@@ -97,9 +103,9 @@ export default function ChatArea({ user, combineId, selectedUser }) {
                   item.senderId === user?.uid
                     ? "bg-gray-100 text-black"
                     : "bg-lime-400"
-                } flex flex-col gap-y-1 whitespace-normal  rounded-bl-lg rounded-br-lg rounded-tr-lg px-2 lg:px-5 py-1 my-2`}
+                }  flex flex-col gap-y-1 whitespace-normal  rounded-bl-lg rounded-br-lg rounded-tr-lg px-2 lg:px-5 py-1 my-2`}
               >
-                <p className="">{item.msg}</p>
+                <p className=" truncate">{item.msg}</p>
                 <p className="text-xs text-gray-400">
                   {new Date(item.date.seconds * 1000).getHours()}:
                   {new Date(item.date.seconds * 1000).getMinutes()}:
