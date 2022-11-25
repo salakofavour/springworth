@@ -13,7 +13,7 @@ export default function SignInForm() {
     setLoadingSpinner(true);
     const status = await handleSignin(data.email, data.password);
     if (status) {
-      router.push("/");
+      router.push("/redirect");
     }
     setLoadingSpinner(false);
   }

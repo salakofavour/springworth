@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 
@@ -6,7 +5,7 @@ import { Navbar, Footer, Container } from "../../components";
 import UserInfoCard from "../login-security/userInfoCard";
 
 import { handleImageUpload } from "../../lib/authFunctions";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export default function SettingContainer({
   user,

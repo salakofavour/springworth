@@ -28,7 +28,7 @@ function ButtonToSignUp() {
         <button
           className={` bg-orange-500 text-white py-1  rounded-sm  border-black w-[22rem] mt-6`}
         >
-          Create your Amazone Account
+          Create New Account
         </button>
       </Link>
     </>

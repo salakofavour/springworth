@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { useCart } from "react-use-cart";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import useSWR from "swr";
 import { Oval } from "react-loader-spinner";
 import { handleSelectUserChat } from "../../lib/authFunctions";

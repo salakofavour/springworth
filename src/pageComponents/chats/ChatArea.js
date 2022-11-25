@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { doc, onSnapshot } from "firebase/firestore";
 import { db } from "../../config/firebase";
 

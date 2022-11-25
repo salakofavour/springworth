@@ -3,7 +3,7 @@ import { PhotoIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { Modal, InputField, SelectInputField } from "../../components";
 import { categories } from "../../data/data";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 import { addProductFields } from "./fields";
 

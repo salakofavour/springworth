@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useCart } from "react-use-cart";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import {
   Navbar,
   Footer,

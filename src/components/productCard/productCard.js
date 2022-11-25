@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { useCart } from "react-use-cart";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { useRouter } from "next/router";
 
 export default function ProductCard({ product, fromCart }) {

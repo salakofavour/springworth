@@ -3,7 +3,7 @@ import LinkItem from "./linkItem";
 
 import { useAuth } from "../../../context/authContext";
 import { auth } from "../../../config/firebase";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export default function DrawerLinks() {
   const { user } = useAuth();

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
 import { useAuth } from "../../context/authContext";
 import { useRouter } from "next/router";
@@ -11,7 +11,7 @@ const LoadingSpinner = dynamic(() =>
 import { Navbar, Container, MyHeader, Footer } from "../../components";
 import AccountOptionCard from "../../pageComponents/account/accountOptionsCard";
 import { auth } from "../../config/firebase";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export default function AccountPage() {
   const { user } = useAuth();

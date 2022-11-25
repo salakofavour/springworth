@@ -8,7 +8,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { slugify } from "./helper";
 import { getUserProuducts, getAllProductsName } from "./getProductsFunctions";
 

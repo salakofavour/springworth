@@ -10,12 +10,14 @@ import {
   handlePhoneUpdate,
   handleNameUpdate,
 } from "../../../lib/authFunctions";
+import { useRouter } from "next/router";
 
 export default function LoginSecurityPage() {
   const { user } = useAuth();
   const [toggleModal, setToggleModal] = useState(false);
   const [isLoadingSpinner, setLoadingSpinner] = useState(false);
   const [tabIndex, setTabIndex] = useState(null);
+  const router = useRouter();
 
   if (!user) {
     router.push("/");

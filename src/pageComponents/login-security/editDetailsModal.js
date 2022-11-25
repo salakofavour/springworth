@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useRef, useEffect, useState } from "react";
 import { handleImageUpload } from "../../lib/authFunctions";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { Modal, InputField } from "../../components";
 import Image from "next/image";
 import { auth } from "../../config/firebase";
@@ -76,7 +76,7 @@ export default function EditDetailsModal({
                 sizes="15vh"
                 alt="avatar"
                 fill
-                className="w-full h-full object-contain rounded-full"
+                className="w-full h-full object-cover rounded-full"
                 src={selectedImg ? selectedImg : userData?.value}
               />
             </div>

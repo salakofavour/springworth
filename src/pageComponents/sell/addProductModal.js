@@ -7,7 +7,7 @@ import { categories } from "../../data/data";
 import Image from "next/image";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 import { handleProductUpload } from "../../lib/postProductsFunctions";
 

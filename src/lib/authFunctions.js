@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 import { db, auth, storage } from "../config/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import {
@@ -75,6 +75,7 @@ export async function handleSignup(name, email, password, img, setProgress) {
     ).json();
 
     if (!stripeId?.id) {
+      toast.error("Something goes wrong");
       return false;
     }
 
@@ -97,7 +98,7 @@ export async function handleSignup(name, email, password, img, setProgress) {
     await setDoc(doc(db, "users", userCredential.user.uid), userData);
     await setDoc(doc(db, "userChats", userCredential.user.uid), {});
 
-    toast.success("account created");
+    toast.success("Account created successfully");
 
     return true;
   } catch (err) {
@@ -110,7 +111,7 @@ export async function handleSignup(name, email, password, img, setProgress) {
 export async function handleSignin(email, password) {
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    toast.success("sign in successfully");
+    toast.success("You signin successfully");
     return true;
   } catch (err) {
     toast.error(err.message);

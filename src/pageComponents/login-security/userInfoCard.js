@@ -28,7 +28,7 @@ export default function UserInfoCard({
           <div className=" relative w-12 h-12 mt-2">
             <Image
               fill
-              className="w-full h-full object-contain rounded-full"
+              className="w-full h-full object-cover rounded-full"
               sizes="15vh"
               alt="profile picture"
               src={data.value}
