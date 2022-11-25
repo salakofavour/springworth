@@ -83,7 +83,7 @@ function ProductCard({ product }) {
             sizes="15vh"
             src={product.imgUrl}
             alt="image"
-            className="rounded-full w-full h-full object-cover"
+            className="w-full h-full  object-contain"
           />
         </div>
         <div className="flex flex-col gap-y-2">
