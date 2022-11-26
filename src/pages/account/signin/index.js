@@ -21,7 +21,7 @@ function ButtonToSignUp() {
     <>
       <div className="flex items-center mt-7">
         <div className="w-28 lg:w-32 h-[1px] bg-gray-400"></div>
-        <p className="text-xs px-1">New to Spring Books?</p>
+        <p className="text-xs px-1">New to SpringWorth Books?</p>
         <div className="w-28 lg:w-32 h-[1px] bg-gray-400"></div>
       </div>
       <Link href={"/account/signup"}>
