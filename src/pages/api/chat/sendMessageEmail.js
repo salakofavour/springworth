@@ -17,11 +17,13 @@ export default async function handler(req, res) {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: `"Springworth Books" <${data.senderEmail}>`, // sender address
+    from: `"SPRINGWORTH BOOKS" <${data.senderEmail}>`, // sender address
     to: `${data.reciverEmail}`, // list of receivers
     subject: "New message", // Subject line
     text: data.message, // plain text body
-    html: `<h2>You have received a message in Springworth Books</h2>`, // html body
+    html: `<h2 >You have new message from ${data.senderName}</h2>
+    <a href="https://springworth-eight.vercel.app/chats">View Message</a>
+    `, // html body
   });
 
   res.status(200).json({ info });

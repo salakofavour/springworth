@@ -10,13 +10,18 @@ import {
   MyHeader,
 } from "../../components";
 
+import { useAuth } from "../../context/authContext";
+import { useRouter } from "next/router";
+
 export default function MyBooksPage() {
   const { items, removeItem, cartTotal } = useCart();
+  const { user } = useAuth();
 
   function removeItemClick(id) {
     removeItem(id);
     toast.success("Item removed");
   }
+
   return (
     <main>
       <MyHeader title={"My Books"} />
@@ -31,7 +36,7 @@ export default function MyBooksPage() {
             {items.length > 0 ? (
               items.map((item, i) => (
                 <div className="col-span-6 lg:col-span-4" key={item.id}>
-                  <ProductCard fromCart={true} product={item} />
+                  <ProductCard user={user} fromCart={true} product={item} />
                   <button
                     onClick={() => removeItemClick(item.id)}
                     className="w-full  flex justify-end"

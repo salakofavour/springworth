@@ -55,16 +55,21 @@ export async function handleProductUpload(
 ) {
   try {
     if (subscriptionStatus === "active") {
-      return UploadProduct(data, imgFile, setProgress);
+      const usersProudct = await getUserProuducts(uid);
+      const userProductsLength = usersProudct?.length;
+
+      if (userProductsLength >= 20) {
+        return toast.error("You reach the max limit of uploading books");
+      } else {
+        return UploadProduct(data, imgFile, setProgress);
+      }
     }
 
     if (subscriptionStatus === "canceled") {
       const usersProudct = await getUserProuducts(uid);
       const userProductsLength = usersProudct?.length;
       if (userProductsLength >= 3) {
-        return toast.error(
-          "Please subscribe to premium to upload more products"
-        );
+        return toast.error("Please subscribe to premium to upload more books");
       } else {
         return UploadProduct(data, imgFile, setProgress);
       }
@@ -74,9 +79,7 @@ export async function handleProductUpload(
       const usersProudct = await getUserProuducts(uid);
       const userProductsLength = usersProudct?.length;
       if (userProductsLength >= 3) {
-        return toast.error(
-          "Please subscribe to premium to upload more products"
-        );
+        return toast.error("Please subscribe to premium to upload more books");
       } else {
         return UploadProduct(data, imgFile, setProgress);
       }
@@ -91,7 +94,7 @@ async function UploadProduct(data, imgFile, setProgress) {
   try {
     const check = await checkNameExist(data.name);
     if (check) {
-      toast.error("Name exits");
+      toast.error("Book name exits");
       return;
     }
 

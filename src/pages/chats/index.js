@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "../../context/authContext";
 
-import { LoadingSpinner } from "../../components";
+import { LoadingSpinner, MyHeader } from "../../components";
 import ChatPageContainer from "../../pageComponents/chats/chatPageContainer";
 
 export default function ChatPage() {
@@ -18,6 +18,7 @@ export default function ChatPage() {
 
   return (
     <main>
+      <MyHeader title={"Chats"} description="Chat with selller and buyer" />
       <ChatPageContainer user={user} />
     </main>
   );

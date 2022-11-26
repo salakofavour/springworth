@@ -59,21 +59,23 @@ export default function UserSellingProfileCard({ user, setOpenModal }) {
         {status && <UserSubscriptionInfo subscription={subscription} />}
       </div>
 
-      <div className="flex flex-col lg:items-end gap-y-1">
+      <div className="flex flex-col lg:items-end ">
         <div>
           <button
             onClick={() => setOpenModal(true)}
             className="flex gap-x-1 h rounded-md px-2 items-center bg-orange-500 hover:bg-orange-400 text-white"
           >
             <PlusIcon className="w-8" />
-            <p>Add Product</p>
+            <p>Add Books</p>
           </button>
         </div>
-        {!status && (
-          <p className="text-[13px] text-gray-500">
-            Free users can only upload 3 products
-          </p>
-        )}
+
+        <p className="text-[13px] pt-1 text-gray-500">
+          Free users can upload 3 Books for free
+        </p>
+        <p className="text-[13px] text-gray-500">
+          Premium users can upload up to 20 books
+        </p>
       </div>
     </div>
   );

@@ -1,11 +1,16 @@
-import { data } from "autoprefixer";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import useSWR from "swr";
 
-import { Navbar, Footer, LoadingSpinner, Container } from "../../components";
+import {
+  Navbar,
+  Footer,
+  LoadingSpinner,
+  Container,
+  MyHeader,
+} from "../../components";
 
 export default function SellerProfilePage() {
   const router = useRouter();
@@ -26,6 +31,10 @@ export default function SellerProfilePage() {
 
   return (
     <main>
+      <MyHeader
+        title={"Seller Profile"}
+        description={"Seller profile details"}
+      />
       <Navbar />
       <Container>
         <div className="px-2 lg:px-10 myLg:px-16 py-5 md:py-10">
