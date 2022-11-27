@@ -33,6 +33,7 @@ export default function UserProductsContainer({ user }) {
             key={item.name}
           >
             <UserProductCard
+              user={user}
               index={i}
               setEditProductModal={setEditProductModal}
               product={item}

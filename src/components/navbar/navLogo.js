@@ -12,7 +12,7 @@ export default function NavLogo({ noBorder }) {
             fill
             priority
             alt="logo"
-            src="https://res.cloudinary.com/dtme6qv4c/image/upload/v1668326173/spring-books-logo-removebg-preview.png"
+            src="https://res.cloudinary.com/dtme6qv4c/image/upload/v1669535919/redone_spw_logo-removebg-preview.png"
           />
         </div>
       </div>

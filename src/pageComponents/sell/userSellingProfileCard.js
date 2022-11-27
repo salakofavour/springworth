@@ -2,8 +2,12 @@ import React from "react";
 import Image from "next/image";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import UserSubscriptionInfo from "./userSubscriptionInfo";
+import { useRouter } from "next/router";
+import { getAllAddress } from "../../lib/authFunctions";
+import { toast } from "react-hot-toast";
 
 export default function UserSellingProfileCard({ user, setOpenModal }) {
+  const router = useRouter();
   const subscription = user?.subscription;
   const subscriptionStatus = subscription?.status;
 
@@ -26,6 +30,16 @@ export default function UserSellingProfileCard({ user, setOpenModal }) {
     ).json();
 
     window.open(data);
+  }
+
+  async function handleOpenAddBooksModal() {
+    const userAddress = await getAllAddress(user?.uid);
+    if (userAddress?.length) {
+      return setOpenModal(true);
+    } else {
+      toast.error("Add atleast 1 address to upload books");
+      return router.push("/account/address/add-new-address");
+    }
   }
 
   return (
@@ -62,7 +76,7 @@ export default function UserSellingProfileCard({ user, setOpenModal }) {
       <div className="flex flex-col lg:items-end ">
         <div>
           <button
-            onClick={() => setOpenModal(true)}
+            onClick={handleOpenAddBooksModal}
             className="flex gap-x-1 h rounded-md px-2 items-center bg-orange-500 hover:bg-orange-400 text-white"
           >
             <PlusIcon className="w-8" />

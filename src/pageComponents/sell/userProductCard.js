@@ -3,18 +3,29 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { deleteProduct } from "../../lib/postProductsFunctions";
 import moment from "moment";
+import { getAllAddress } from "../../lib/authFunctions";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
 
 export default function UserProductCard({
+  user,
   product,
   setEditProductModal,
   setSelectedProduct,
   index,
 }) {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  function handleEdit() {
-    setSelectedProduct(index);
-    setEditProductModal(true);
+  async function handleEdit() {
+    const userAddress = await getAllAddress(user?.uid);
+    if (userAddress?.length) {
+      setSelectedProduct(index);
+      setEditProductModal(true);
+    } else {
+      toast.error("Add atleast 1 address to upload books");
+      router.push("/account/address/add-new-address");
+    }
   }
 
   async function handleDeleteClick(id) {

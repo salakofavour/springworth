@@ -37,11 +37,11 @@ export default function CarouselItem() {
             alt="images"
           />
         </div>
-        <div className=" flex flex-col lg:mt-20 items-start">
+        <div className="py-2 flex flex-col lg:mt-20 items-start">
           <p className=" bg-black/50 text-white rounded-md px-2 py-1 text-xs lg:text-[16px] ">
             Cheapest Book
           </p>
-          <h3 className="text-xl lg:pb-2 text-center lg:text-left lg:text-5xl font-bold w-full lg:w-full lg:leading-[3.5rem]">
+          <h3 className="text-xl  lg:pb-2 text-left lg:text-5xl font-bold w-full lg:w-full lg:leading-[3.5rem]">
             {data.product.name}
           </h3>
           <p className="text-[16px] lg:text-xl font-medium">
