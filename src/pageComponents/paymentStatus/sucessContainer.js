@@ -24,8 +24,7 @@ export default function SucessContainer({ user }) {
         <CheckBadgeIcon className="w-20 text-green-500" />
         <h4 className="text-2xl font-medium">Payment Sucessfull</h4>
         <p className=" font-bold text-center text-[14px] px-5">
-          Your account is now premium for 1 month you can upload unlimited
-          products
+          Your account is now premium for 1 month you can upload up to 20 books
         </p>
 
         <Link href={"/sell"}>
