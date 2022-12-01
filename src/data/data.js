@@ -1,23 +1,23 @@
 export const categories = [
   {
-    name: "Biography",
-    id: "Biography",
-  },
-  {
-    name: "Motivation",
-    id: "Motivation",
+    name: "Textbooks",
+    id: "Textbooks",
   },
   {
     name: "Novels",
     id: "Novels",
   },
   {
-    name: "Textbooks",
-    id: "Textbooks",
+    name: "Mangas",
+    id: "Mangas",
   },
   {
-    name: "Self-help",
-    id: "Self-help",
+    name: "Motivation",
+    id: "Motivation"
+  },
+  {
+    name: "Comics",
+    id: "Comics",
   },
   {
     name: "Others",
