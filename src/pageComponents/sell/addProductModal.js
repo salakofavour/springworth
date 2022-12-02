@@ -95,7 +95,7 @@ export default function AddProductModal({ user, setModalOpen }) {
   }
 
   return (
-    <Modal setModalOpen={setModalOpen} title={"Add Products"}>
+    <Modal setModalOpen={setModalOpen} title={"Add Books"}>
       {progress ? (
         <ProgreesAndMessage />
       ) : (
@@ -133,7 +133,7 @@ export default function AddProductModal({ user, setModalOpen }) {
             isGrid
             isLoadingSpinner={isLoading}
             handleClick={handleAddProductClick}
-            buttonText={"Add Product"}
+            buttonText={"Add"}
             fields={addProductFields}
           />
           <input

@@ -75,7 +75,7 @@ export default function EditProductModal({
   }
 
   return (
-    <Modal setModalOpen={setEditProductModal} title="Edit Product">
+    <Modal setModalOpen={setEditProductModal} title="Edit Book">
       <>
         <div className="flex gap-x-2 items-start">
           <button
@@ -110,7 +110,7 @@ export default function EditProductModal({
         </div>
         <InputField
           handleClick={handleSubmitClick}
-          buttonText={"Edit Product"}
+          buttonText={"Save"}
           fields={addProductFields}
           defaulValue={defaultData}
           isLoadingSpinner={isLoading}
