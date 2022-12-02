@@ -4,7 +4,7 @@ export const signUpFields = [
     label: "Name",
     name: "name",
     minLength: 3,
-    maxLength: 12,
+    maxLength: 20,
   },
   {
     type: "email",

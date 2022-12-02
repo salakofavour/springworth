@@ -67,7 +67,7 @@ export default function LoginSecurityPage() {
           type: "text",
           label: "Edit Name",
           minLength: 2,
-          maxLenght: 12,
+          maxLength: 20,
           name: "name",
         },
       ],

@@ -14,6 +14,8 @@ export default function InputField({
   const { register, handleSubmit, reset } = useForm();
   const [isCheckBox, setCheckBox] = useState(false);
 
+  console.log(fields);
+
   useEffect(() => {
     reset({
       ...defaulValue,
@@ -67,7 +69,7 @@ export default function InputField({
               placeholder={item?.placeholder}
               required={true}
               minLength={item.minLength}
-              maxLength={item?.maxLenght}
+              maxLength={item?.maxLength}
               {...register(item.name)}
               type={item.type}
               step="0.001"
