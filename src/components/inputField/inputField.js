@@ -37,7 +37,7 @@ export default function InputField({
           <div
             className={`${
               isGrid
-                ? "flex flex-col gap-y-1 col-span-6"
+                ? "flex flex-col gap-y-1 col-span-12 md:col-span-6"
                 : "flex flex-col gap-y-1"
             } `}
             key={i}
@@ -59,7 +59,7 @@ export default function InputField({
           <div
             className={`${
               isGrid
-                ? "flex flex-col gap-y-1 col-span-6"
+                ? "flex flex-col gap-y-1 col-span-12 md:col-span-6"
                 : "flex flex-col gap-y-1"
             } `}
             key={i}
