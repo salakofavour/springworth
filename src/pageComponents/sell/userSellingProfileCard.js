@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import UserSubscriptionInfo from "./userSubscriptionInfo";
@@ -11,32 +11,41 @@ export default function UserSellingProfileCard({ user, setOpenModal }) {
   const subscription = user?.subscription;
   const subscriptionStatus = subscription?.status;
 
+  const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
+
   const status = subscriptionStatus === "active" ? true : false;
 
   async function handlePremiumClick() {
+    setLoading2(true);
     const data = await (
       await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/stripe/create-subscription?userId=${user.uid}`
       )
     ).json();
+    setLoading2(false);
     window.open(data);
   }
 
   async function handleManageClick() {
+    setLoading2(true);
     const { data } = await (
       await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/stripe/customer-portal?id=${user.uid}`
       )
     ).json();
-
+    setLoading2(false);
     window.open(data);
   }
 
   async function handleOpenAddBooksModal() {
+    setLoading(true);
     const userAddress = await getAllAddress(user?.uid);
     if (userAddress?.length) {
+      setLoading(false);
       return setOpenModal(true);
     } else {
+      setLoading(false);
       toast.error("Add atleast 1 address to upload books");
       return router.push("/account/address/add-new-address");
     }
@@ -65,7 +74,11 @@ export default function UserSellingProfileCard({ user, setOpenModal }) {
             onClick={status ? handleManageClick : handlePremiumClick}
             className=" bg-orange-500 hover:bg-orange-400 text-white  rounded-md py-1 px-2"
           >
-            {status ? "Manage Subscription" : "Subscribe To Premium"}
+            {loading2
+              ? "Loading..."
+              : status
+              ? "Manage Subscription"
+              : "Subscribe To Premium"}
           </button>
         </div>
         {!status && <p className="text-[13px]">Monthly - $5.99</p>}
@@ -80,7 +93,7 @@ export default function UserSellingProfileCard({ user, setOpenModal }) {
             className="flex gap-x-1 h rounded-md px-2 items-center bg-orange-500 hover:bg-orange-400 text-white"
           >
             <PlusIcon className="w-8" />
-            <p>Add Books</p>
+            <p>{loading ? "Loading..." : "Add Books"}</p>
           </button>
         </div>
 

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/authContext";
 import dynamic from "next/dynamic";
 import {
@@ -22,6 +22,12 @@ export default function SellPage() {
   const router = useRouter();
   const [openModal, setModalOpen] = useState(false);
 
+  useEffect(() => {
+    openModal
+      ? (document.body.style.overflow = "hidden")
+      : (document.body.style.overflow = "auto");
+  }, [openModal]);
+
   if (!user) {
     router.push("/");
     return;
@@ -30,7 +36,7 @@ export default function SellPage() {
   if (user?.loading) return <LoadingSpinner />;
 
   return (
-    <main className="relative">
+    <main>
       <MyHeader title={"Sell"} />
       <Navbar />
       <Container>
