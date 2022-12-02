@@ -29,7 +29,7 @@ export default function UserProductsContainer({ user }) {
       <div className="grid grid-cols-12 gap-5 mb-10">
         {data.products?.map((item, i) => (
           <div
-            className="col-span-12 lg:col-span-4 2xl:col-span-3"
+            className="col-span-12 lg:col-span-6 myLg:col-span-4 "
             key={item.name}
           >
             <UserProductCard

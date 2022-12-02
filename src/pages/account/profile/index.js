@@ -58,6 +58,7 @@ export default function LoginSecurityPage() {
   const userData = [
     {
       name: "Name",
+
       value: user.name,
       isImg: false,
       func: handleNameUpdateClick,
@@ -66,6 +67,7 @@ export default function LoginSecurityPage() {
           type: "text",
           label: "Edit Name",
           minLength: 2,
+          maxLenght: 12,
           name: "name",
         },
       ],

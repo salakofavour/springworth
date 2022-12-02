@@ -30,28 +30,53 @@ export default function InputField({
           : "flex flex-col gap-y-4 mt-5 w-full"
       }`}
     >
-      {fields.map((item, i) => (
-        <div
-          className={`${
-            isGrid
-              ? "flex flex-col gap-y-1 col-span-6"
-              : "flex flex-col gap-y-1"
-          } `}
-          key={i}
-        >
-          <label className="font-bold text-[15px]">{item.label}</label>
-          <input
-            placeholder={item?.placeholder}
-            required={true}
-            minLength={item.minLength}
-            {...register(item.name)}
-            type={item.type}
-            step="0.001"
-            presicion={2}
-            className="inputField"
-          />
-        </div>
-      ))}
+      {fields.map((item, i) =>
+        item.isDescription ? (
+          <div
+            className={`${
+              isGrid
+                ? "flex flex-col gap-y-1 col-span-6"
+                : "flex flex-col gap-y-1"
+            } `}
+            key={i}
+          >
+            <label className="font-bold text-[15px]">{item.label}</label>
+            <textarea
+              placeholder={item?.placeholder}
+              required={true}
+              minLength={item.minLength}
+              maxLength={item?.maxLength}
+              {...register(item.name)}
+              type={item.type}
+              step="0.001"
+              presicion={2}
+              className="inputField h-24"
+            />
+          </div>
+        ) : (
+          <div
+            className={`${
+              isGrid
+                ? "flex flex-col gap-y-1 col-span-6"
+                : "flex flex-col gap-y-1"
+            } `}
+            key={i}
+          >
+            <label className="font-bold text-[15px]">{item.label}</label>
+            <input
+              placeholder={item?.placeholder}
+              required={true}
+              minLength={item.minLength}
+              maxLength={item?.maxLenght}
+              {...register(item.name)}
+              type={item.type}
+              step="0.001"
+              presicion={2}
+              className="inputField"
+            />
+          </div>
+        )
+      )}
       {fromSignUp && (
         <div className="flex justify-start gap-x-2">
           <input onChange={() => setCheckBox(!isCheckBox)} type={"checkbox"} />

@@ -49,7 +49,7 @@ export default function UserProductCard({
         </div>
       </Link>
       <div className="flex flex-col gap-y-1">
-        <p className=" font-medium">{product.name}</p>
+        <p className=" font-medium ">{product.name}</p>
         <p className="text-[15px]">$ {product.price}</p>
         <div className="flex gap-x-2 mt-1 text-[13px]">
           <button

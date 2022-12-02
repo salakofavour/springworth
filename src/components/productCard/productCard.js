@@ -89,8 +89,8 @@ export default function ProductCard({ user, product, fromCart }) {
           />
         </div>
       </Link>
-      <div className="flex w-full px-1 xl:px-5 py-3 items-center justify-between">
-        <p className="text-[16px] w-20 lg:w-full lg:text-xl font-semibold  truncate">
+      <div className="flex w-full gap-x-3 px-1 xl:px-5 py-3 items-center justify-between">
+        <p className="text-[14px] w-20 lg:w-56 lg:text-xl font-semibold  truncate">
           {product.name}
         </p>
         <p className="font-semibold text-xs lg:text-[16px]">${product.price}</p>

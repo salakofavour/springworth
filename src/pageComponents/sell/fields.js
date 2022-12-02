@@ -13,6 +13,7 @@ export const addProductFields = [
   },
   {
     type: "text",
+    isDescription: true,
     label: "Description",
     name: "description",
     minLength: 3,
