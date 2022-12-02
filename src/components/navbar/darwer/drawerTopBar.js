@@ -12,7 +12,7 @@ export default function DrawerTopBar() {
         <div className="flex pt-10">
           <div className="flex gap-x-2 mt-6 flex-wrap">
             <button>
-              <p className="text-white font-medium items-center">
+              <p className="text-white truncate w-32 lg:w-56 font-medium items-center">
                 {user?.name ? user.name : "Sign in"}
               </p>
             </button>
