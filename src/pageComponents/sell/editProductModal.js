@@ -75,7 +75,7 @@ export default function EditProductModal({
   }
 
   return (
-    <Modal setModalOpen={setEditProductModal} title="Edit Book">
+    <Modal product={true} setModalOpen={setEditProductModal} title="Edit Book">
       <>
         <div className="flex gap-x-2 items-start">
           <button

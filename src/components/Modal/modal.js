@@ -1,10 +1,14 @@
 import React from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
-export default function Modal({ children, setModalOpen, title }) {
+export default function Modal({ children, setModalOpen, title, product }) {
   return (
-    <div className=" fixed flex pb-2 sm:py-10 lg:py-20 justify-center  items-start  overflow-y-scroll  inset-0  bg-black  bg-opacity-30 backdrop-blur-sm z-50  h-screen w-screen">
-      <div className="bg-white mx-2 my-1  w-[95%] overflow-y-scroll  lg:mx-0 lg:w-2/3 rounded-md px-4 py-3 pb-5 md:pb-8">
+    <div
+      className={`fixed flex  sm:py-10 lg:py-14 justify-center ${
+        product ? "items-start" : "items-center"
+      }    overflow-y-scroll    inset-0  bg-black  bg-opacity-30 backdrop-blur-sm z-50  h-screen w-screen`}
+    >
+      <div className="bg-white mx-2 my-1  w-[95%] overflow-y-scroll  lg:overflow-hidden  lg:mx-0 lg:w-2/3 rounded-md px-4 py-3 pb-5 md:pb-8">
         <div className="flex justify-between my-4">
           <p className="text-xl font-semibold">{title}</p>
           <XMarkIcon

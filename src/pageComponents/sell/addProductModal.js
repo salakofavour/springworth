@@ -95,7 +95,11 @@ export default function AddProductModal({ user, setModalOpen }) {
   }
 
   return (
-    <Modal setModalOpen={setModalOpen} title={"Add Books"}>
+    <Modal
+      product={progress ? false : true}
+      setModalOpen={setModalOpen}
+      title={"Add Books"}
+    >
       {progress ? (
         <ProgreesAndMessage />
       ) : (
