@@ -74,7 +74,6 @@ function SellerInfo({ user, address }) {
         />
       </div>
       <p className=" truncate">Name : {user.name}</p>
-      //<p>Email : {user.email}</p> i commented it out so buyers or other sellers cannot see sellers emailaddress
       <p>State : {address?.state}</p>
       <p>City : {address?.city}</p>
       <p>Meeting Place : {address?.mettingPlace}</p>
