@@ -56,7 +56,7 @@ export default function CheckoutContainer({ product, user }) {
   return (
     <div className="hidden lg:col-span-4 myLg:col-span-3 lg:flex flex-col gap-y-2 px-5 py-5 rounded-md border-4 border-gray-300 w-full">
       <div className="flex justify-between items-start">
-        <p className="font-semibold">Buy new:</p>
+        <p className="font-semibold">Buy for:</p>
         <div className="flex flex-col text-right">
           <p className=" text-xl font-medium text-orange-600">
             ${product.price}
