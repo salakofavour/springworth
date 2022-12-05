@@ -46,9 +46,9 @@ export default function DrawerLinks() {
     },
     {
       id: 6,
-      name: "Logout",
+      name: user?.name && "Logout",
       href: "#",
-      fun: handleLogout,
+      fun: user?.name && handleLogout,
     },
   ];
 

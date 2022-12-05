@@ -102,8 +102,10 @@ export async function handleSignup(name, email, password, img, setProgress) {
 
     return true;
   } catch (err) {
+    if (err.message === "Firebase: Error (auth/email-already-in-use).") {
+      toast.error("Email Already In Use");
+    }
     console.log(err.message);
-    toast.error(err.message);
     return false;
   }
 }
@@ -114,7 +116,12 @@ export async function handleSignin(email, password) {
     toast.success("You signin successfully");
     return true;
   } catch (err) {
-    toast.error(err.message);
+    if (err.message === "Firebase: Error (auth/user-not-found).") {
+      toast.error("Wrong Email");
+    }
+    if (err.message === "Firebase: Error (auth/wrong-password).") {
+      toast.error("Wrong Password");
+    }
     console.log(err.message);
     return false;
   }

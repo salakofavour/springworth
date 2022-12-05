@@ -103,6 +103,7 @@ export default function LoginSecurityPage() {
       />
       {toggleModal && (
         <EditUserModal
+          openModal={toggleModal}
           isLoading={isLoadingSpinner}
           userData={userData[tabIndex]}
           setToggleModal={setToggleModal}

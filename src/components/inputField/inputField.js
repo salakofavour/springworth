@@ -14,8 +14,6 @@ export default function InputField({
   const { register, handleSubmit, reset } = useForm();
   const [isCheckBox, setCheckBox] = useState(false);
 
-  console.log(fields);
-
   useEffect(() => {
     reset({
       ...defaulValue,

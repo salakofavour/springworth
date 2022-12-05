@@ -9,6 +9,7 @@ import { auth } from "../../config/firebase";
 export default function EditDetailsModal({
   isLoading,
   setToggleModal,
+  openModal,
   userData,
 }) {
   const imgRef = useRef();
@@ -52,7 +53,11 @@ export default function EditDetailsModal({
   }, [progress]);
 
   return (
-    <Modal title={`Edit ${userData.name}`} setModalOpen={setToggleModal}>
+    <Modal
+      openModal={openModal}
+      title={`Edit ${userData.name}`}
+      setModalOpen={setToggleModal}
+    >
       {!userData?.isImg ? (
         <InputField
           isLoadingSpinner={isLoading}

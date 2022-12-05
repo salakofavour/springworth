@@ -41,12 +41,22 @@ export default function SellPage() {
       <Navbar />
       <Container>
         <div className="px-2 lg:px-32 mt-5">
-          <UserSellingProfileCard setOpenModal={setModalOpen} user={user} />
+          <UserSellingProfileCard
+            openModal={openModal}
+            setOpenModal={setModalOpen}
+            user={user}
+          />
           <UserProductsContainer user={user} />
         </div>
       </Container>
       <Footer />
-      {openModal && <AddProductModal user={user} setModalOpen={setModalOpen} />}
+      {openModal && (
+        <AddProductModal
+          openModal={openModal}
+          user={user}
+          setModalOpen={setModalOpen}
+        />
+      )}
     </main>
   );
 }

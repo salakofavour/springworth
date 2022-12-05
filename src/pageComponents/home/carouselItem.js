@@ -1,31 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import useSWR from "swr";
 
-import { Oval } from "react-loader-spinner";
-
-export default function CarouselItem() {
-  async function fetchProducts() {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/product/getCheapestProductApi`
-    );
-    return res.json();
-  }
-
-  const { data } = useSWR("cheapestProduct", fetchProducts);
-
-  if (!data)
-    return (
-      <div className="h-96 w-full flex items-center justify-center">
-        <Oval height={"50"} color="black" secondaryColor="#696969" />
-      </div>
-    );
-
-  if (!data?.product) return <p>No products</p>;
-
+export default function CarouselItem({ product }) {
   return (
-    <Link href={`/${data.product.slug}`}>
+    <Link href={`/${product.slug}`}>
       <div className="flex flex-wrap lg:flex-nowrap py-5 px-5 lg:px-20 item-start lg:justify-center gap-x-20">
         <div className="relative w-96 h-56 lg:h-96 ">
           <Image
@@ -33,7 +12,7 @@ export default function CarouselItem() {
             priority
             className="w-full h-full object-contain"
             fill
-            src={data.product.imgUrl}
+            src={product.imgUrl}
             alt="images"
           />
         </div>
@@ -42,10 +21,10 @@ export default function CarouselItem() {
             Cheapest Book
           </p>
           <h3 className="text-xl  lg:pb-2 text-left lg:text-4xl font-bold w-72 lg:w-[35rem] whitespace-pre truncate lg:leading-[3.5rem]">
-            {data.product.name}
+            {product.name}
           </h3>
           <p className="text-[16px] lg:text-xl font-medium">
-            Price ${data.product.price}
+            Price ${product.price}
           </p>
         </div>
       </div>

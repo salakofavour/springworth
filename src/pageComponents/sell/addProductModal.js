@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 
 import { handleProductUpload } from "../../lib/postProductsFunctions";
 
-export default function AddProductModal({ user, setModalOpen }) {
+export default function AddProductModal({ user, setModalOpen, openModal }) {
   const [selectedImageUrl, setSelectedImageUrl] = useState(null);
   const [selectedImageFile, setSelectedImageFile] = useState(null);
   const [isLoading, setLoading] = useState(false);
@@ -96,6 +96,7 @@ export default function AddProductModal({ user, setModalOpen }) {
 
   return (
     <Modal
+      openModal={openModal}
       product={progress ? false : true}
       setModalOpen={setModalOpen}
       title={"Add Books"}

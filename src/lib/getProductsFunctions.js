@@ -120,13 +120,13 @@ export async function getTop10ExpensiveProducts() {
 export async function getChepestProduct() {
   try {
     let data = [];
-    const q = query(collection(db, "products"), orderBy("price"), limit(1));
+    const q = query(collection(db, "products"), orderBy("price"), limit(4));
     const querySnapshot = await getDocs(q);
 
     querySnapshot.forEach((doc) => {
       data.push({ ...doc.data(), id: doc.id });
     });
-    return data[0];
+    return data;
   } catch (err) {
     console.log(err.message);
   }

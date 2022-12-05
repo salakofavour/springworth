@@ -12,6 +12,7 @@ import { handleEditProduct } from "../../lib/postProductsFunctions";
 export default function EditProductModal({
   user,
   setEditProductModal,
+  openModal,
   product,
 }) {
   const router = useRouter();
@@ -75,7 +76,11 @@ export default function EditProductModal({
   }
 
   return (
-    <Modal product={true} setModalOpen={setEditProductModal} title="Edit Book">
+    <Modal
+      openModal={openModal}
+      setModalOpen={setEditProductModal}
+      title="Edit Book"
+    >
       <>
         <div className="flex gap-x-2 items-start">
           <button

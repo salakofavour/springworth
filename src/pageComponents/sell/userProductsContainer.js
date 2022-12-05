@@ -45,6 +45,7 @@ export default function UserProductsContainer({ user }) {
       {editProductModal && (
         <EditProductModal
           user={user}
+          openModal={editProductModal}
           setEditProductModal={setEditProductModal}
           product={data.products[selectedProduct]}
         />

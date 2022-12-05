@@ -1,23 +1,36 @@
 import React from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { Dialog } from "@headlessui/react";
 
-export default function Modal({ children, setModalOpen, title, product }) {
+export default function Modal({ children, openModal, setModalOpen, title }) {
   return (
-    <div
-      className={`fixed flex  sm:py-10 lg:py-14 justify-center ${
-        product ? "items-start" : "items-center"
-      }    overflow-y-scroll    inset-0  bg-black  bg-opacity-30 backdrop-blur-sm z-50  h-screen w-screen`}
+    <Dialog
+      open={openModal}
+      onClose={() => setModalOpen(false)}
+      className="relative z-50"
     >
-      <div className="bg-white mx-2 my-1  w-[95%] overflow-y-scroll  lg:overflow-hidden  lg:mx-0 lg:w-2/3 rounded-md px-4 py-3 pb-5 md:pb-8">
-        <div className="flex justify-between my-4">
-          <p className="text-xl font-semibold">{title}</p>
-          <XMarkIcon
-            onClick={() => setModalOpen(false)}
-            className="w-8 cursor-pointer "
-          />
+      {/* The backdrop, rendered as a fixed sibling to the panel container */}
+      <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+
+      {/* Full-screen scrollable container */}
+      <div className="fixed inset-0 overflow-y-auto">
+        {/* Container to center the panel */}
+        <div className="flex min-h-full items-center justify-center p-2">
+          {/* The actual dialog panel  */}
+          <Dialog.Panel className="mx-auto px-4 pb-5  md:px-10 py-3 rounded-lg md:py-5 w-[95%] md:w-[75%] lg:w-[60%]  bg-white">
+            <div className="flex justify-between items-center mb-5">
+              <Dialog.Title className="font-semibold text-2xl ">
+                {title}
+              </Dialog.Title>
+              <XMarkIcon
+                className="w-8 cursor-pointer"
+                onClick={() => setModalOpen(false)}
+              />
+            </div>
+            {children}
+          </Dialog.Panel>
         </div>
-        {children}
       </div>
-    </div>
+    </Dialog>
   );
 }

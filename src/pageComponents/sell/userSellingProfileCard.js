@@ -6,7 +6,11 @@ import { useRouter } from "next/router";
 import { getAllAddress } from "../../lib/authFunctions";
 import { toast } from "react-hot-toast";
 
-export default function UserSellingProfileCard({ user, setOpenModal }) {
+export default function UserSellingProfileCard({
+  openModal,
+  user,
+  setOpenModal,
+}) {
   const router = useRouter();
   const subscription = user?.subscription;
   const subscriptionStatus = subscription?.status;
