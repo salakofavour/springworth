@@ -17,7 +17,7 @@ export default function Modal({ children, openModal, setModalOpen, title }) {
         {/* Container to center the panel */}
         <div className="flex min-h-full items-center justify-center p-2">
           {/* The actual dialog panel  */}
-          <Dialog.Panel className="mx-auto px-4 pb-5  md:px-10 py-3 rounded-lg md:py-5 w-[95%] md:w-[75%] lg:w-[60%]  bg-white">
+          <Dialog.Panel className="mx-auto px-4 pb-5  md:px-10 py-3 rounded-lg md:py-5 w-[100%] md:w-[75%] lg:w-[60%]  bg-white">
             <div className="flex justify-between items-center mb-5">
               <Dialog.Title className="font-semibold text-2xl ">
                 {title}
