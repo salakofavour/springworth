@@ -44,8 +44,8 @@ export default function EditProductModal({
       isNameEdit = true;
     }
 
-    if (selectedImgFile?.size / 1000 > 300) {
-      toast.error("Image size must be under 300kb");
+    if (selectedImgFile?.size / 1000 > 2000) {
+      toast.error("Image size must be under 2mb");
       return;
     }
 

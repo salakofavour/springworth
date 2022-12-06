@@ -10,6 +10,7 @@ import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import toast from "react-hot-toast";
 
 import { handleProductUpload } from "../../lib/postProductsFunctions";
+import { useEffect } from "react";
 
 export default function AddProductModal({ user, setModalOpen, openModal }) {
   const [selectedImageUrl, setSelectedImageUrl] = useState(null);
@@ -43,8 +44,8 @@ export default function AddProductModal({ user, setModalOpen, openModal }) {
       return;
     }
 
-    if (selectedImageFile?.size / 1000 > 300) {
-      toast.error("Image size must be under 300kb");
+    if (selectedImageFile?.size / 1000 > 2000) {
+      toast.error("Image size must be under 2mb");
       return;
     }
 
