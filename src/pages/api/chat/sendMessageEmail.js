@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     text: data.message, // plain text body
     html: `
     <img src="https://res.cloudinary.com/dtme6qv4c/image/upload/v1669535919/redone_spw_logo-removebg-preview.png" />
-    <h1 >Hi ${data.senderName}</h1>
+    <h1 >Hi ${data.reciverEmail}</h1>
     <h3>You have new message from ${data.senderEmail}</h3>
     <a href="https://springworth-eight.vercel.app/chats">View Message</a>
     <p>Do not reply to this automatically generated email, it is only to inform you.</p>
