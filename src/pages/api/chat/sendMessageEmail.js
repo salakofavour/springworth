@@ -17,12 +17,16 @@ export default async function handler(req, res) {
 
   // send mail with defined transport object
   let info = await transporter.sendMail({
-    from: `"SPRINGWORTH BOOKS" <${data.senderEmail}>`, // sender address
+    from: `${data.senderEmail}`, // sender address
     to: `${data.reciverEmail}`, // list of receivers
-    subject: "New message", // Subject line
+    subject: "You have a new message in springbooks", // Subject line
     text: data.message, // plain text body
-    html: `<h2 >You have new message from ${data.senderName}</h2>
+    html: `
+    <img src="https://res.cloudinary.com/dtme6qv4c/image/upload/v1669535919/redone_spw_logo-removebg-preview.png" />
+    <h1 >Hi ${data.senderName}</h1>
+    <h3>You have new message from ${data.senderEmail}</h3>
     <a href="https://springworth-eight.vercel.app/chats">View Message</a>
+    <p>Do not reply to this automatically generated email, it is only to inform you.</p>
     `, // html body
   });
 
