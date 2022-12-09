@@ -73,7 +73,7 @@ export async function getProductsByCategory(category) {
       collection(db, "products"),
       where("category", "==", category),
       orderBy("index", "desc"),
-      limit(20)
+      limit(50)
     );
 
     const countQ = query(
