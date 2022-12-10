@@ -4,7 +4,7 @@ import { useAuth } from "../../../context/authContext";
 import { LoadingSpinner, MyHeader } from "../../../components";
 import { useRouter } from "next/router";
 import Link from "next/link";
-
+import useSWR from "swr";
 import { Navbar, Container, Footer } from "../../../components";
 import AddAddressCard from "../../../pageComponents/address/addAddressCard";
 import AddressCardContainer from "../../../pageComponents/address/addressCardContainer";
@@ -12,6 +12,15 @@ import AddressCardContainer from "../../../pageComponents/address/addressCardCon
 export default function AddressPage() {
   const { user } = useAuth();
   const router = useRouter();
+
+  async function fetchAllUserAddress() {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/user/getAllAddressApi?uId=${user?.uid}`
+    );
+    return res.json();
+  }
+
+  const { data } = useSWR([user, "allAddress"], fetchAllUserAddress);
 
   if (!user) {
     router.push("/");
@@ -34,18 +43,22 @@ export default function AddressPage() {
     );
   }
 
+  console.log(data);
+
   return (
     <main>
       <MyHeader title={"Address"} />
       <Navbar />
       <Container>
-        <div className="mx-2  mr-2 lg:mx-36 lg:mr-48 my-4 ">
+        <div className="mx-2 mb-20 mr-2 lg:mx-36 lg:mr-48 my-4 ">
           <NavigationLinks />
           <h4 className="text-3xl mt-5">Your Addresses</h4>
           <div className="grid grid-cols-12 gap-y-4 mt-8 lg:gap-x-5">
-            <div className="col-span-12 lg:col-span-4 w-full">
-              <AddAddressCard />
-            </div>
+            {!data?.allAddress?.length && (
+              <div className="col-span-12 lg:col-span-4 w-full">
+                <AddAddressCard />
+              </div>
+            )}
             <AddressCardContainer uid={user.uid} />
           </div>
         </div>

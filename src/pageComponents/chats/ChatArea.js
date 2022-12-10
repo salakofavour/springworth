@@ -48,6 +48,7 @@ export default function ChatArea({ user, combineId, selectedUser }) {
     const data = {
       senderEmail: user?.email,
       senderName: user?.name,
+      reciverName: selectedUser?.name,
       reciverEmail: selectedUser?.email,
       message: text,
     };
