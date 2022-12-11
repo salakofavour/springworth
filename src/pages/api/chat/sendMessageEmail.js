@@ -19,14 +19,18 @@ export default async function handler(req, res) {
   let info = await transporter.sendMail({
     from: `${data.senderEmail}`, // sender address
     to: `${data.reciverEmail}`, // list of receivers
-    subject: "You have a new message in springbooks", // Subject line
+    subject: "You have a new message in Springworth Books", // Subject line
     text: data.message, // plain text body
-    html: `
-    <img style="width: 200px; height: 200px; object-fit: contain" src="https://res.cloudinary.com/dtme6qv4c/image/upload/v1669535919/redone_spw_logo-removebg-preview.png" />
-    <p style="font-size: 2rem">Hi ${data.reciverName}</p>
-    <p style="font-size: 1.3rem">You have new message from ${data.senderName}</p>
-    <a style="color: green; text-align: center;" href="https://springworth-eight.vercel.app/chats">View Message</a>
-    <p>Do not reply to this automatically generated email, it is only to inform you.</p>
+    html: ` 
+    <div style="display: flex; justify-items: center;">
+    <img style="width: 200px;" src="https://res.cloudinary.com/dtme6qv4c/image/upload/v1669535919/redone_spw_logo-removebg-preview.png" />
+    </div>
+    <p style="font-size: 2rem; margin-top: 2.5rem;">Hi ${data.reciverName}</p>
+    <p style="font-size: 1.3rem; margin-bottom:2rem;">You have new message from ${data.senderName}</p>
+    <a style="color: green; text-align: center;padding-left: 12px; padding-right: 12px;   padding-top: 10px; padding-bottom: 10px;          border-radius: 10px;          
+       background-color: green;
+    color: black;" href="https://springworth-eight.vercel.app/chats">View Message</a>
+    <p style="margin-top: 2rem;">Do not reply to this automatically generated email, it is only to inform you.</p>
     `, // html body
   });
 
