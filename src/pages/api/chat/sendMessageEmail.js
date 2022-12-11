@@ -22,7 +22,7 @@ export default async function handler(req, res) {
     subject: "You have a new message in Springworth Books", // Subject line
     text: data.message, // plain text body
     html: ` 
-    <div style="display: flex; justify-items: center;">
+    <div style="margin: auto; display: -webkit-flex; width: 100%; display: flex; justify-content: center;">
     <img style="width: 200px;" src="https://res.cloudinary.com/dtme6qv4c/image/upload/v1669535919/redone_spw_logo-removebg-preview.png" />
     </div>
     <p style="font-size: 2rem; margin-top: 2.5rem;">Hi ${data.reciverName}</p>
