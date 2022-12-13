@@ -3,7 +3,6 @@ const nodemailer = require("nodemailer");
 export default async function handler(req, res) {
   const data = req.body;
 
-  const test = "zbbpgvyoizddqtgg";
   const passw = "bbvh hors bgbq pxjm";
   const email = "noreply.springworthbooks@gmail.com";
 
@@ -27,7 +26,7 @@ export default async function handler(req, res) {
     <div style="margin: auto; display: -webkit-flex; width: 100%; display: flex; justify-content: center;">
     <img style="width: 200px;" src="https://res.cloudinary.com/dtme6qv4c/image/upload/v1669535919/redone_spw_logo-removebg-preview.png" />
     </div>
-    <p style="font-size: 2rem; margin-top: 2.5rem;">Hi ${data.reciverName}</p>
+    <p style="font-size: 1.3rem; margin-top: 2rem;font-weight: bold;">Hi ${data.reciverName}</p>
     <p style="font-size: 1.3rem; margin-bottom:2rem;">You have new message from ${data.senderName}</p>
     <a style="color: green; text-align: center;padding-left: 12px; padding-right: 12px;   padding-top: 10px; padding-bottom: 10px;          border-radius: 10px;          
        background-color: green;
