@@ -8,7 +8,9 @@ export default function SignupPage() {
   return (
     <div className="flex flex-col h-full w-full items-center">
       <MyHeader title={"Sing up"} />
-      <NavLogo noBorder />
+      <div className="mt-2">
+        <NavLogo noBorder />
+      </div>
       <FormContainer formType={"signup"} />
     </div>
   );

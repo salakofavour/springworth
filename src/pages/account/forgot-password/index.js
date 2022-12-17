@@ -8,7 +8,9 @@ export default function ForgotPasswordPage() {
   return (
     <div className="flex flex-col h-full w-full items-center">
       <MyHeader title={"Forgot password"} />
-      <NavLogo noBorder />
+      <div className="mt-2">
+        <NavLogo noBorder />
+      </div>
       <FormContainer formType={"forgot-password"} />
     </div>
   );

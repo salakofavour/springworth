@@ -9,7 +9,9 @@ export default function SigninPage() {
   return (
     <div className="flex flex-col h-full w-full items-center">
       <MyHeader title={"Sign in"} />
-      <NavLogo noBorder />
+      <div className="mt-2">
+        <NavLogo noBorder />
+      </div>
       <FormContainer formType={"signin"} />
       <ButtonToSignUp />
     </div>

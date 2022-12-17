@@ -23,15 +23,16 @@ export default async function handler(req, res) {
     subject: "You have a new message in Springworth Books", // Subject line
     text: data.message, // plain text body
     html: ` 
-    <div style="margin: auto; display: -webkit-flex; width: 100%; display: flex; justify-content: center;">
-    <img style="width: 200px;" src="https://res.cloudinary.com/dtme6qv4c/image/upload/v1669535919/redone_spw_logo-removebg-preview.png" />
-    </div>
-    <p style="font-size: 1.3rem; margin-top: 2rem;font-weight: bold;">Hi ${data.reciverName}</p>
-    <p style="font-size: 1.3rem; margin-bottom:2rem;">You have new message from ${data.senderName}</p>
-    <a style="color: green; text-align: center;padding-left: 12px; padding-right: 12px;   padding-top: 10px; padding-bottom: 10px;          border-radius: 10px;          
+
+    <img style="width: 300px;" src="https://res.cloudinary.com/dtme6qv4c/image/upload/v1671267185/emailLogo.jpg" />
+
+    <p style="font-size: 1.3rem; margin-top: 1rem;font-weight: semibold;">Hi ${data.reciverName},</p>
+    <p style="font-size: 1.3rem; margin-bottom:2rem;  font-weight: semibold;">You have new message from ${data.senderName}.</p>
+    <a style="color: white; text-align: center;padding-left: 12px; padding-right: 12px;   padding-top: 10px; padding-bottom: 10px; border-radius: 10px;          
        background-color: green;
     color: black;" href="https://springworth-eight.vercel.app/chats">View Message</a>
-    <p style="margin-top: 2rem;">Do not reply to this automatically generated email, it is only to inform you.</p>
+    <p style="margin-top: 4rem;">This is an automatically generated email. *** Please do not reply to this email ***</p>
+    <p style="margin-top:1rem">If you wish to contact us, please Call (863)-210-7587, or email sworthcustomerservice@gmail.com</p>
     `, // html body
   });
 
