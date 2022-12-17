@@ -11,6 +11,7 @@ export default function NavLogo({ noBorder }) {
             sizes="20vw"
             fill
             priority
+            className="w-full h-full object-contain"
             alt="logo"
             src="https://res.cloudinary.com/dtme6qv4c/image/upload/v1671266719/reLOGO-3.png"
           />
