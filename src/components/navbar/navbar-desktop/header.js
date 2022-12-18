@@ -10,7 +10,7 @@ const CartButton = dynamic(() => import("../cartButton/cartButton"));
 export default function Header({ user }) {
   return (
     <header
-      className={`bg-green-600 fixed z-10 top-0 left-0  gap-x-1 justify-between 2xl:gap-x-2 flex w-full items-center px-3 py-2`}
+      className={`bg-[#054902] fixed z-10 top-0 left-0  gap-x-1 justify-between 2xl:gap-x-2 flex w-full items-center px-3 py-2`}
     >
       <Suspense fallback={"Loading.."}>
         <NavLogo />

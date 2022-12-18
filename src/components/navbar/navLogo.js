@@ -2,7 +2,10 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function NavLogo({ noBorder }) {
+export default function NavLogo({ noBorder, fromForm }) {
+  const imgLink = fromForm
+    ? "https://res.cloudinary.com/dtme6qv4c/image/upload/v1671267185/emailLogo.jpg"
+    : "https://res.cloudinary.com/dtme6qv4c/image/upload/v1671266719/reLOGO-3.png";
   return (
     <Link href="/">
       <div className={`${noBorder ? "" : ""} `}>
@@ -13,7 +16,7 @@ export default function NavLogo({ noBorder }) {
             priority
             className="w-full h-full object-contain"
             alt="logo"
-            src="https://res.cloudinary.com/dtme6qv4c/image/upload/v1671266719/reLOGO-3.png"
+            src={imgLink}
           />
         </div>
       </div>

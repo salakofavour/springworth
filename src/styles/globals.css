@@ -11,7 +11,7 @@
 }
 
 .navBorder {
-  @apply px-2 h-12 flex items-center border border-green-600 hover:border-white cursor-pointer;
+  @apply px-2 h-12 flex items-center border border-[#054902] hover:border-white cursor-pointer;
 }
 
 .navBorder2 {

@@ -9,7 +9,7 @@ export default function ForgotPasswordPage() {
     <div className="flex flex-col h-full w-full items-center">
       <MyHeader title={"Forgot password"} />
       <div className="mt-2">
-        <NavLogo noBorder />
+        <NavLogo noBorder fromForm />
       </div>
       <FormContainer formType={"forgot-password"} />
     </div>

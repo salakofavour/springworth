@@ -9,7 +9,7 @@ export default function SignupPage() {
     <div className="flex flex-col h-full w-full items-center">
       <MyHeader title={"Sing up"} />
       <div className="mt-2">
-        <NavLogo noBorder />
+        <NavLogo noBorder fromForm />
       </div>
       <FormContainer formType={"signup"} />
     </div>

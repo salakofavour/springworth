@@ -13,7 +13,7 @@ export default function NavbarMobile({ toggleDrawer, setToggleDrawer }) {
     <div
       className={`${
         toggleDrawer && "brightness-50"
-      } flex flex-col bg-green-600 `}
+      } flex flex-col bg-[#054902] `}
     >
       <Header user={user} setToogleDrawer={setToggleDrawer} />
       <hr className="mb-2" />

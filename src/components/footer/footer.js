@@ -53,7 +53,7 @@ export default function Footer() {
   ];
 
   return (
-    <div className={` bg-green-600 w-full px-5 lg:px-20 py-10 mt-5`}>
+    <div className={` bg-[#054902] w-full px-5 lg:px-20 py-10 mt-5`}>
       <div className=" grid grid-cols-12 gap-6 lg:gap-x-10 text-white">
         {footer.map((item) => (
           <div
