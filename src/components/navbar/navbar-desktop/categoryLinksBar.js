@@ -20,7 +20,7 @@ export default function CategoryLinksBar({ setToggleDrawer }) {
 
   return (
     <div
-      className={` bg-green-500 flex items-center gap-x-3 mt-[4.5rem]  px-3 py-1 w-full`}
+      className={` bg-[#054902] flex items-center gap-x-3 mt-[4.5rem]  px-3 py-1 w-full`}
     >
       <button
         ref={btnRef}

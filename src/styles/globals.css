@@ -15,7 +15,7 @@
 }
 
 .navBorder2 {
-  @apply border px-2 h-8 flex items-center border-green-500 hover:border-white cursor-pointer;
+  @apply border px-2 h-8 flex items-center border-[#054902] hover:border-white cursor-pointer;
 }
 
 .padding {
