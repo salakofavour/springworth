@@ -109,6 +109,7 @@ async function UploadProduct(data, imgFile, setProgress) {
       price: parseFloat(data.price),
       createdAt: serverTimestamp(),
       userId: auth.currentUser.uid,
+      isShow: true,
       index: currentProductIndex,
     });
 
@@ -183,4 +184,29 @@ export async function handleEditProduct(
     toast.error(err.message);
     return false;
   }
+}
+
+export async function resetShowValue() {
+  console.log("value reset");
+
+  const data = await getUserProuducts(auth.currentUser.uid);
+
+  data.forEach(async (item) => {
+    await updateDoc(doc(db, "products", item.id), {
+      isShow: true,
+    });
+  });
+}
+
+export async function validateSellerProducts() {
+  const uid = auth.currentUser.uid;
+  let allProducts = await getUserProuducts(uid);
+  let first3Products = allProducts.slice(0, 3);
+  allProducts.splice(0, 3);
+
+  allProducts.forEach(async (item) => {
+    await updateDoc(doc(db, "products", item.id), {
+      isShow: false,
+    });
+  });
 }

@@ -44,14 +44,17 @@ export default function SellerProfilePage() {
             </div>
 
             <div className="col-span-12 gap-y-3 gap-x-5 md:col-span-8 lg:col-span-9 grid grid-cols-12">
-              {data?.products.map((item) => (
-                <div
-                  key={item.id}
-                  className="col-span-6 md:col-span-4 lg:col-span-3"
-                >
-                  <ProductCard product={item} />
-                </div>
-              ))}
+              {data?.products.map(
+                (item) =>
+                  item.isShow && (
+                    <div
+                      key={item.id}
+                      className="col-span-6 md:col-span-4 lg:col-span-3"
+                    >
+                      <ProductCard product={item} />
+                    </div>
+                  )
+              )}
             </div>
           </div>
         </div>

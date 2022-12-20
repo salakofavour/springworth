@@ -24,11 +24,14 @@ export default function TopProductsContainer() {
       <div className="px-2 lg:px-5 py-3 mt-14 sm:mt-0">
         <p className="text-2xl font-medium">Top Products</p>
         <div className="grid grid-cols-12 gap-2 lg:gap-5 my-5">
-          {data.products?.map((item) => (
-            <div className="col-span-6 lg:col-span-3" key={item.id}>
-              <ProductCard product={item} />
-            </div>
-          ))}
+          {data.products?.map(
+            (item) =>
+              item.isShow && (
+                <div className="col-span-6 lg:col-span-3" key={item.id}>
+                  <ProductCard product={item} />
+                </div>
+              )
+          )}
         </div>
       </div>
     </div>

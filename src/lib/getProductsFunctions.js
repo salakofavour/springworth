@@ -9,6 +9,8 @@ import {
   collection,
   getCountFromServer,
   startAfter,
+  updateDoc,
+  doc,
 } from "firebase/firestore";
 
 export async function getUserProuducts(uid) {
@@ -197,4 +199,18 @@ export async function getAllProductsName() {
     // toast.error(err.message);
     console.log(err.message);
   }
+}
+
+export async function addShowField() {
+  let products = [];
+
+  const querySnapshot = await getDocs(collection(db, "products"));
+  querySnapshot.forEach((doc) => {
+    products.push({ ...doc.data(), id: doc.id });
+  });
+  products.forEach(async (item) => {
+    await updateDoc(doc(db, "products", item.id), {
+      isShow: true,
+    });
+  });
 }

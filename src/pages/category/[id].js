@@ -132,10 +132,7 @@ export default function CategoryProductsPage() {
             />
           </div>
           <div className="flex flex-col  gap-y-2 col-span-12 lg:col-span-9">
-            <p className="px-2 lg:px-0">
-              Total Items :{" "}
-              {filtterProducts ? filtterProducts?.length : products?.length}
-            </p>
+            <p className="px-2 lg:px-0"></p>
             <CategoryProductsContainer
               products={!filtterProducts ? products : filtterProducts}
             />

@@ -27,20 +27,23 @@ export default function UserProductsContainer({ user }) {
         </p>
       </div>
       <div className="grid grid-cols-12 gap-5 mb-10">
-        {data.products?.map((item, i) => (
-          <div
-            className="col-span-12 lg:col-span-6 myLg:col-span-4 "
-            key={item.name}
-          >
-            <UserProductCard
-              user={user}
-              index={i}
-              setEditProductModal={setEditProductModal}
-              product={item}
-              setSelectedProduct={setSelectedProduct}
-            />
-          </div>
-        ))}
+        {data.products?.map(
+          (item, i) =>
+            item.isShow && (
+              <div
+                className="col-span-12 lg:col-span-6 myLg:col-span-4 "
+                key={item.name}
+              >
+                <UserProductCard
+                  user={user}
+                  index={i}
+                  setEditProductModal={setEditProductModal}
+                  product={item}
+                  setSelectedProduct={setSelectedProduct}
+                />
+              </div>
+            )
+        )}
       </div>
       {editProductModal && (
         <EditProductModal

@@ -45,13 +45,16 @@ export default function Carousel() {
         autoplay={true}
         pagination={{ clickable: true }}
       >
-        {data.product.map((item) => (
-          <SwiperSlide key={item.id} className="slide">
-            <div className="slide-content">
-              <CarouselItem product={item} />
-            </div>
-          </SwiperSlide>
-        ))}
+        {data.product.map(
+          (item) =>
+            item.isShow && (
+              <SwiperSlide key={item.id} className="slide">
+                <div className="slide-content">
+                  <CarouselItem product={item} />
+                </div>
+              </SwiperSlide>
+            )
+        )}
       </Swiper>
 
       <CarouselProductsContainer />

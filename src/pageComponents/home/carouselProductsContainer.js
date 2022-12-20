@@ -23,9 +23,9 @@ export default function CarouselProductsContainer() {
 
   return (
     <div className="absolute mt-5 lg:top-[25rem] gap-x-2 md:gap-x-5 left-0 w-full flex padding overflow-auto">
-      {data.products.map((item) => (
-        <ProductCard product={item} key={item.id} />
-      ))}
+      {data.products.map(
+        (item) => item.isShow && <ProductCard product={item} key={item.id} />
+      )}
     </div>
   );
 }

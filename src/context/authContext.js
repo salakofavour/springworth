@@ -3,6 +3,11 @@ import { useEffect, useState, useContext, createContext } from "react";
 import { db, auth } from "../config/firebase";
 import { getDoc, doc, onSnapshot } from "firebase/firestore";
 
+import {
+  resetShowValue,
+  validateSellerProducts,
+} from "../lib/postProductsFunctions";
+
 const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
@@ -19,6 +24,12 @@ export function AuthContextProvider({ children }) {
           setUser(doc.data());
           if (doc.data()?.subscription) {
             triggerSubscriptionStatus(doc.id);
+            if (doc.data().subscription?.status === "canceled") {
+              validateSellerProducts();
+            }
+            if (doc.data().subscription?.status === "active") {
+              resetShowValue();
+            }
           }
         });
       } else {

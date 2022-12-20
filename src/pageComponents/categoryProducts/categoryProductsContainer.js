@@ -4,9 +4,10 @@ import CategoryProductCard from "./categoryProductCard";
 export default function CategoryProductsContainer({ products }) {
   return (
     <>
-      {products.map((item) => (
-        <CategoryProductCard item={item} key={item.slug} />
-      ))}
+      {products.map(
+        (item) =>
+          item.isShow && <CategoryProductCard item={item} key={item.slug} />
+      )}
     </>
   );
 }
