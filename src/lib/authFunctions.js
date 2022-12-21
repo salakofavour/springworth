@@ -289,10 +289,11 @@ export async function handleUpdateUserSubscriptionStatus(subscription, uid) {
 export async function getAddressByProduct(id) {
   try {
     let data = [];
+    const productSeller = await getCurrentUserFromDb(id);
     const querySnapshot = await getDocs(collection(db, "users", id, "address"));
 
     querySnapshot.forEach((doc) => {
-      data.push({ ...doc.data(), id: doc.id });
+      data.push({ ...doc.data(), id: doc.id, name: productSeller.name });
     });
 
     return data[0];

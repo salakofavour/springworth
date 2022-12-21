@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Oval } from "react-loader-spinner";
@@ -13,6 +15,7 @@ export default function InputField({
 }) {
   const { register, handleSubmit, reset } = useForm();
   const [isCheckBox, setCheckBox] = useState(false);
+  const [isShowPassword, setShowPassword] = useState("password");
 
   useEffect(() => {
     reset({
@@ -58,7 +61,7 @@ export default function InputField({
             className={`${
               isGrid
                 ? "flex flex-col gap-y-1 col-span-12 md:col-span-6"
-                : "flex flex-col gap-y-1"
+                : "flex flex-col gap-y-1 relative"
             } `}
             key={i}
           >
@@ -69,11 +72,29 @@ export default function InputField({
               minLength={item.minLength}
               maxLength={item?.maxLength}
               {...register(item.name)}
-              type={item.type}
+              type={item.type === "password" ? isShowPassword : item.type}
               step="0.001"
               presicion={2}
               className="inputField"
             />
+            {item.type === "password" && (
+              <div className=" absolute inset-0 top-8 left-[17rem]">
+                <div>
+                  <img
+                    onClick={() => {
+                      isShowPassword === "password"
+                        ? setShowPassword("text")
+                        : setShowPassword("password");
+                    }}
+                    className="w-6"
+                    src={
+                      isShowPassword === "password" ? "/view.png" : "/eye.png"
+                    }
+                    alt="view"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         )
       )}
@@ -81,7 +102,14 @@ export default function InputField({
         <div className="flex justify-start gap-x-2">
           <input onChange={() => setCheckBox(!isCheckBox)} type={"checkbox"} />
           <p className="text-[13px]">
-            By continuing you are agreeing to our Terms and conditions
+            By continuing you are agreeing to our{" "}
+            <Link
+              target={"_blank"}
+              className=" text-blue-500"
+              href={"/term-conditions"}
+            >
+              Terms and conditions
+            </Link>
           </p>
         </div>
       )}

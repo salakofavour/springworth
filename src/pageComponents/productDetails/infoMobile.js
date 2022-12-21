@@ -80,6 +80,7 @@ export default function InfoMobile({ product, user }) {
         <p className="mt-2">{product.description}</p>
         <div className="flex flex-col gap-y-1 mt-3">
           <p className="font-medium">Location:</p>
+          <p>Name : {data.address?.name}</p>
           <p>City : {data.address?.city}</p>
           <p>State : {data.address?.state}</p>
           <p>Suggested meeting place : {data.address?.mettingPlace}</p>
