@@ -12,6 +12,7 @@ export default function ForgotPasswordPage() {
         <NavLogo noBorder fromForm />
       </div>
       <FormContainer formType={"forgot-password"} />
+      <p className="mt-5">Please check the email in spam folder also</p>
     </div>
   );
 }

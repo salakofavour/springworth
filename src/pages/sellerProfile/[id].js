@@ -71,12 +71,12 @@ function SellerInfo({ user, address }) {
         <Image
           fill
           sizes="15vh"
-          src={user.imgUrl}
+          src={user?.imgUrl}
           alt="image"
           className="rounded-full w-full h-full object-cover"
         />
       </div>
-      <p className=" truncate">Name : {user.name}</p>
+      <p className=" truncate">Name : {user?.name}</p>
       <p>State : {address?.state}</p>
       <p>City : {address?.city}</p>
       <p>Meeting Place : {address?.mettingPlace}</p>
