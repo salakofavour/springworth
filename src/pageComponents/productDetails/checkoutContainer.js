@@ -66,7 +66,7 @@ export default function CheckoutContainer({ product, user }) {
       <div className="flex flex-col gap-y-1">
         <hr />
         <p className="text-[15px] font-medium">Location:</p>
-        <p>Name : {data.address?.name}</p>
+        <p>Seller : {data.address?.name}</p>
         <p>State : {data.address?.state}</p>
         <p>City : {data.address?.city}</p>
         <p>Suggested meeting place : {data.address?.mettingPlace}</p>
